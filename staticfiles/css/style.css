@@ -202,7 +202,7 @@ max-width: 100% !important;
     
 }
 .list-wr{
-
+    margin-top:10px;
     max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
@@ -212,11 +212,11 @@ max-width: 100% !important;
 }
 .border-list{
     width: 100%;
-    border: 1px solid #000000;
+    border: 1px solid black;
     border-radius: 10px !important;
     padding: 10px;
-    margin-bottom: 20px !important;
     padding-bottom: 4px !important;
+
 }
 
 .border-list p{
@@ -326,14 +326,13 @@ cursor: pointer !important;
 }
 
 .red-border{
-    background-color: #F7918D !important;
+
     border-radius: 20px !important;
     border-left: none;
     border-right: none;
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px !important;
-    padding-bottom: 4px !important;
+    cursor:pointer;
 }
 
 .blue-border{
@@ -366,6 +365,7 @@ cursor: pointer !important;
 }
 .wrapper-list-wr{
     padding: 20px 20px !important;
+    margin-bottom:10px;
 }
 .bb-bottom{
     border-bottom: 1px solid black;
@@ -551,7 +551,9 @@ color: #41C176 !important;
 
 
 
-
+.accordion_in{max-height:0;
+              overflow: hidden;
+              transition: max-height 0.5s ease-out;}
 
 /* responsive */
 
