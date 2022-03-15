@@ -15,12 +15,12 @@ class Category(models.Model):
 class Places(models.Model):
     bind = models.ForeignKey(Category,on_delete=models.CASCADE)
     name = models.CharField(verbose_name='Joy nomi',max_length=250)
-    vote = models.PositiveIntegerField(verbose_name="Bu joyga ovoz berish")
-    percent = models.FloatField(verbose_name="Reytingi")
+    vote = models.PositiveIntegerField(verbose_name="Bu joyga ovoz berish",default=0)
+    percent = models.FloatField(verbose_name="Reytingi",default=0)
     date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['-percent']
