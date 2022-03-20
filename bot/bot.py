@@ -1,20 +1,32 @@
-import os
+import sqlite3
 import logging
-from pathlib import Path
-import django
-os.environ.setdefault("DJANGO_SETTINGS_MODULE",'configs.settings')
-django.setup()
 from aiogram import Bot, Dispatcher, executor, types
+API_TOKEN = '1974105410:AAEgB77ojFYxBhuvH_oz6y9qv7F2GOq7diw'
+# Configure logging
 logging.basicConfig(level=logging.INFO)
-BOT_TOKEN = "1974105410:AAEgB77ojFYxBhuvH_oz6y9qv7F2GOq7diw"
-bot = Bot(token=BOT_TOKEN)
+# Initialize bot and dispatcher
+bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
-
+con = sqlite3.connect("../db.sqlite3")
+cur = con.cursor()
 @dp.message_handler()
 async def echo(message: types.Message):
-    await message.answer(message.text)
+    USERID = message.chat.id
+    USERNAME = message.chat.username
+    CHECKUSER = False
 
+    #START USER CHECK AUTH
+    cur.execute(f"""
+         SELECT userid FROM vote_botuser WHERE userid={USERID}
+                """)
+    result = cur.fetchall()
+    if result == []:
+        CHECKUSER = False
+    else:
+        CHECKUSER = True
+    # END USER CHECK AUTH
 
-from vote.models import Category
+    await message.reply("just")
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
+con.close()

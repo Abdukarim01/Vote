@@ -1,6 +1,9 @@
+import self as self
 from django.contrib import admin
 
-from .models import Category, Places
+from .models import Category, Places,BotUser
+
+from django.utils.html import mark_safe
 
 
 # Register your models here.
@@ -17,7 +20,22 @@ class CategoryAdminRegister(admin.ModelAdmin):
 
 @admin.register(Places)
 class PlacesAdminRegister(admin.ModelAdmin):
-    list_display = ['id','name','vote','percent']
+    list_display = ['id','name','vote']
     list_editable = ['name']
     search_fields = ['name','vote']
     list_filter = ['id']
+
+@admin.register(BotUser)
+class BotUserAdminRegister(admin.ModelAdmin):
+    list_display = ['phonenumber','voted','telegram','call']
+    search_fields = ['username','name']
+
+    def call(self, obj):
+        return mark_safe(f"<a href=\"tel:+{obj.phonenumber}\" target=\"_blank\">{obj.name}</a>")
+
+    call.short_description = "qo'ng'iroq qilish"
+
+    def telegram(self, obj):
+        return mark_safe(f"<a href=\"https://t.me/{obj.username}\" target=\"_blank\">{obj.username}</a>")
+
+    telegram.short_description = "telegram orqalik bog'lanish"
