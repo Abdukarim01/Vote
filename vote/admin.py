@@ -5,7 +5,6 @@ from .models import Category, Places,BotUser,RegistredBotUser
 
 from django.utils.html import mark_safe
 
-
 # Register your models here.
 class PlacesAdminTabularInline(admin.TabularInline):
     model = Places
@@ -39,3 +38,4 @@ class BotUserAdminRegister(admin.ModelAdmin):
         return mark_safe(f"<a href=\"https://t.me/{obj.username}\" target=\"_blank\">{obj.username}</a>")
 
     telegram.short_description = "telegram orqalik bog'lanish"
+
