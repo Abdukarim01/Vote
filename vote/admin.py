@@ -1,4 +1,3 @@
-import self as self
 from django.contrib import admin
 
 from .models import Category, Places,BotUser,RegistredBotUser
