@@ -93,6 +93,7 @@ def getfilteruser(request):
                               </td>
                               <td>{z.voted} ga</td>
                               <td>{z.date} da</td>
+                              <td>{z.age} yoshda</td>
                             </tr>
                         """
     return HttpResponse(text)
