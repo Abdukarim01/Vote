@@ -12,7 +12,7 @@ from buttons import vote,categories,categoryplaces
 from draw import drawimg
 logging.basicConfig(level=logging.INFO)
 
-API_TOKEN = "1974105410:AAEgB77ojFYxBhuvH_oz6y9qv7F2GOq7diw"
+API_TOKEN = "BOT TOKEN"
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
